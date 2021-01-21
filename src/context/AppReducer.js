@@ -1,6 +1,7 @@
 export default (state, action) => {
     switch (action.type) {
       case 'GET_EPISODES':
+        //console.log(action.payload);
         return {
           ...state,
           loading: false,
@@ -8,6 +9,7 @@ export default (state, action) => {
         };
   
       case 'EPISODES_ERROR':
+        //console.log(action.payload);
         return {
           ...state,
           error: action.payload

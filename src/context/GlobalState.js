@@ -25,7 +25,7 @@ export const GlobalProvider = ({ children }) => {
       .then(response => {
         dispatch({
           type: 'GET_EPISODES',
-          payload: response.data.response
+          payload: response.data._embedded.episodes
         });
       })
       .catch(error => {
