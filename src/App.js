@@ -10,7 +10,7 @@ import DenseAppBar from './components/AppBar'
 
 
 const App = () => {
-  const { episodes, getEpisodes } = useContext(GlobalContext);
+  const { getEpisodes } = useContext(GlobalContext);
 
   useEffect(() => {
     getEpisodes();
@@ -18,7 +18,6 @@ const App = () => {
   }, []);
 
   
-  console.log(episodes)
   return (
     
       <div className="App">

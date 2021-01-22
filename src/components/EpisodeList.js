@@ -1,70 +1,67 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import Loading from './Loading';
+import NothingToShow from './NothingToShow';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import useStyles from "./styles";
+
+
 const EpisodeList = () => {
-  const { episodes, loading, error, getEpisodes } = useContext(GlobalContext);
+  const classes = useStyles();
+  const { episodes, loading, error } = useContext(GlobalContext);
 
   if (error) {
     return <Typography variant="p" color="inherit">Error! Failed to load episodes!</Typography>
   }
 
-
   return (
-
     <div>
+      {loading ? (
+        <Loading />
+      ) : (
+          <div>
 
-      <Typography variant="h4" color="inherit">Rick and Morty Episodes</Typography>
-      <br />
-      <br />
+            { episodes.length === 0 ?
+              <NothingToShow />
+              :
+              <List className={classes.root}>
+                {
+                  episodes.map((item) => (
 
+                    <ListItem
+                      className={classes.listItem}
+                      key={item.id}
+                      alignItems="center"
+                      divider
+                      button
+                      component={Link}
+                      to={`/detailedepisodeinformation/${item.id}`}
+                    >
 
+                      <img src={item.image.medium} alt="img" />
+                      <ListItemText primary={`Title: ${item.name}`} />
+                      <ListItemText primary={`Number: ${item.number}`} />
+                      <Button
+                        variant="outlined"
+                        color="primary"
+                      >
+                        more
+                      </Button>
 
-      <div>
-        {loading ? (
-          <Typography variant="h4" color="inherit">Loading...</Typography>
-        ) : (
-            <div>
-              
-              { episodes.length === 0 ?
-                <Typography variant="p" color="inherit">Nothing to show...</Typography>
-                :
-
-                <div>
-                <Divider />
-                  {
-                    episodes.map((item) => (
-
-                      <div key={item.id}>
-
-                        <img src={item.image.medium} alt="img" />
-                        <div>Title: {item.name}</div>
-                        <div>Number: {item.number}</div>
-                        <div>
-
-                          <Button
-                            component={Link}
-                            to={`/detailedepisodeinformation/${item.id}`}
-                            variant="outlined"
-                            color="primary">
-                            more
-                          </Button>
-
-                        </div>
-                        <Divider />
-                      </div>
-
-                    ))
-                  }
-
-                </div>
-              }
-            </div>
-          )}
-      </div>
+                    </ListItem>
+                  ))
+                }
+              </List>
+            }
+          </div>
+        )}
     </div>
+
 
   );
 };
