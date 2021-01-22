@@ -1,18 +1,22 @@
 import React, { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer';
 import axios from 'axios';
+import {
+  GET_EPISODES,
+  EPISODES_ERROR,
+ } from "./Types";
 
-// initial state
+// Initial state
 const initialState = {
   episodes: [],
   error: null,
   loading: true
 };
 
-// create context
+// Create context
 export const GlobalContext = createContext(initialState);
 
-// provider
+// Global Provider
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
@@ -24,13 +28,13 @@ export const GlobalProvider = ({ children }) => {
       .get(url)
       .then(response => {
         dispatch({
-          type: 'GET_EPISODES',
+          type: GET_EPISODES,
           payload: response.data._embedded.episodes
         });
       })
       .catch(error => {
         dispatch({
-          type: 'EPISODES_ERROR',
+          type: EPISODES_ERROR,
           payload: error
         });
       });

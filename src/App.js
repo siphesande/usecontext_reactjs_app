@@ -3,25 +3,33 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import EpisodeList from './components/EpisodeList';
 import DetailedEpisodeInformation from './components/DetailedEpisodeInformation';
-import { GlobalProvider } from './context/GlobalState';
+//import { GlobalProvider } from './context/GlobalState';
 import { GlobalContext } from './context/GlobalState';
+import DenseAppBar from './components/AppBar'
+
 
 
 const App = () => {
-  
+  const { episodes, getEpisodes } = useContext(GlobalContext);
+
+  useEffect(() => {
+    getEpisodes();
+   
+  }, []);
 
   
+  console.log(episodes)
   return (
-    <GlobalProvider>
+    
       <div className="App">
         <Router>
+        <DenseAppBar />
           <div className="container">
             <Route exact path="/" component={EpisodeList} />
             <Route exact path="/detailedepisodeinformation/:episode_id" component={DetailedEpisodeInformation} />
           </div>
         </Router>
       </div>
-    </GlobalProvider>
   );
 }
 
