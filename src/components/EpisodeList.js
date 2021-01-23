@@ -61,8 +61,6 @@ const EpisodeList = () => {
           </div>
         )}
     </div>
-
-
   );
 };
 

@@ -1,9 +1,8 @@
 # Getting Started with Create React App
 
-
 > React, useContext, Material-ui app 
 
-## Quick Start
+# Quick Start
 Run app using npm
 ```
 # On the terminal
@@ -14,18 +13,20 @@ npm install
 # Run on http://localhost:3000
 npm start 
 
-
 # To create a production build
 npm run build
- 
 ```
  OR run the app using yarn
 ```
 yarn install
 yarn start
+
+# To create a production build
 yarn build
 ```
--I decided to only use Javascript and context API because this App is very small and simple.
-context API doesn't require any third-party libraries.
--Using a third-party library like redux  is an overkill. 
--Using typescript is also an overkill. 
+- I decided to only use Javascript and context API because this App is very small and simple.
+  Context API doesn't require any third-party libraries.
+- Using a third-party library like redux is an overkill. 
+- Using typescript is also an overkill. 
+- That's why I'm not using typescript and redux
+

@@ -19,7 +19,7 @@ import useStyles from "./styles";
 const DetailedEpisodeInformation = (props) => {
   const classes = useStyles();
   const { episodes, loading } = useContext(GlobalContext);
-  let detailed_episode_array = episodes.filter(episodes_item => episodes_item.id == props.match.params.episode_id)
+  const detailed_episode_array = episodes.filter(episodes_item => episodes_item.id == props.match.params.episode_id)
 
   return (
 
@@ -43,8 +43,8 @@ const DetailedEpisodeInformation = (props) => {
                       <Card className={classes.cardRoot}>
                         <CardHeader
                           avatar={
-                            <Avatar aria-label="episode" src="/static/images/avatar/1.jpg" className={classes.avatar}>
-                            {` E ${episode_item.number}`}
+                            <Avatar aria-label="episode" className={classes.avatar}>
+                            {`${episode_item.number}`}
                             </Avatar>
                           }
                           title={episode_item.name}
@@ -73,7 +73,7 @@ const DetailedEpisodeInformation = (props) => {
                             startIcon={<ArrowBackIcon />}
                           >
                             Back
-                            </Button>
+                          </Button>
                         </CardActions>
 
                       </Card>

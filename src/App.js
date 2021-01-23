@@ -8,11 +8,10 @@ import './App.css';
 
 
 const App = () => {
-  const { getEpisodes } = useContext(GlobalContext);
+  const { getEpisodes, episodes } = useContext(GlobalContext);
 
   useEffect(() => {
     getEpisodes();
-
   }, []);
 
   return (
