@@ -1,5 +1,5 @@
 
-> React, useContext, Material-ui app 
+> React, useContext, Material-ui application that displays a list of Rick and Morty episodes.
 
 # Quick Start
 Run app using npm
