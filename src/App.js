@@ -1,12 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import EpisodeList from './components/EpisodeList';
 import DetailedEpisodeInformation from './components/DetailedEpisodeInformation';
-//import { GlobalProvider } from './context/GlobalState';
 import { GlobalContext } from './context/GlobalState';
-import DenseAppBar from './components/AppBar'
-
+import MainAppBar from './components/AppBar'
+import './App.css';
 
 
 const App = () => {
@@ -14,21 +12,19 @@ const App = () => {
 
   useEffect(() => {
     getEpisodes();
-   
+
   }, []);
 
-  
   return (
-    
-      <div className="App">
-        <Router>
-        <DenseAppBar />
-          <div className="container">
-            <Route exact path="/" component={EpisodeList} />
-            <Route exact path="/detailedepisodeinformation/:episode_id" component={DetailedEpisodeInformation} />
-          </div>
-        </Router>
-      </div>
+    <div className="App">
+      <Router>
+        <MainAppBar />
+        <div className="container">
+          <Route exact path="/" component={EpisodeList} />
+          <Route exact path="/detailedepisodeinformation/:episode_id" component={DetailedEpisodeInformation} />
+        </div>
+      </Router>
+    </div>
   );
 }
 

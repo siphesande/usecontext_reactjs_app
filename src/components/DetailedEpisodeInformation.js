@@ -9,12 +9,12 @@ import { Link } from 'react-router-dom';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Card from '@material-ui/core/Card';
-import useStyles from "./styles";
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
+import useStyles from "./styles";
 
 const DetailedEpisodeInformation = (props) => {
   const classes = useStyles();
@@ -22,65 +22,69 @@ const DetailedEpisodeInformation = (props) => {
   let detailed_episode_array = episodes.filter(episodes_item => episodes_item.id == props.match.params.episode_id)
 
   return (
-    
-      <div>
-        {loading ? (
-          <Loading />
-        ) : (
-            <div>
 
-              { detailed_episode_array.length === 0 ?
-                <NothingToShow />
-                :
-                <List className={classes.root}>
-                  {
-                    detailed_episode_array.map((episode_item) => (
-                      <ListItem
-                        className={classes.listItem}
-                        key={episode_item.id}
-                        alignItems="center"
-                      >
-                        <Card className={classes.cardRoot}>
-                          <CardHeader
-                            avatar={
-                              <Avatar aria-label="episode" className={classes.avatar}>
-                                {episode_item.number}
-                              </Avatar>
-                            }
-                            title={episode_item.name}
-                            subheader={episode_item.airdate}
-                          />
-                          <CardMedia
-                            className={classes.media}
-                            image={episode_item.image.original}
-                            title={episode_item.name}
-                          />
-                          <CardContent>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                              <span dangerouslySetInnerHTML={{ __html: episode_item.summary }} />
-                            </Typography>
-                          </CardContent>
-                          <CardActions disableSpacing>
-                            <Button
-                              component={Link}
-                              to="/"
-                              variant="outlined"
-                              color="primary"
-                              startIcon={<ArrowBackIcon />}
-                            >
-                              Back
+    <div>
+      {loading ? (
+        <Loading />
+      ) : (
+          <div>
+
+            { detailed_episode_array.length === 0 ?
+              <NothingToShow />
+              :
+              <List className={classes.root}>
+                {
+                  detailed_episode_array.map((episode_item) => (
+                    <ListItem
+                      className={classes.listItem}
+                      key={episode_item.id}
+                      alignItems="center"
+                    >
+                      <Card className={classes.cardRoot}>
+                        <CardHeader
+                          avatar={
+                            <Avatar aria-label="episode" src="/static/images/avatar/1.jpg" className={classes.avatar}>
+                            {` E ${episode_item.number}`}
+                            </Avatar>
+                          }
+                          title={episode_item.name}
+                          subheader={episode_item.airdate}
+                        />
+                        <CardMedia
+                          className={classes.media}
+                          image={episode_item.image.original}
+                          title={episode_item.name}
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="h6" component="h2">
+                            {`S ${episode_item.season} : E ${episode_item.number}`}
+                          </Typography>
+
+                          <Typography variant="body2" color="textSecondary" component="p">
+                            <span dangerouslySetInnerHTML={{ __html: episode_item.summary }} />
+                          </Typography>
+                        </CardContent>
+                        <CardActions disableSpacing>
+                          <Button
+                            component={Link}
+                            to="/"
+                            variant="outlined"
+                            color="primary"
+                            startIcon={<ArrowBackIcon />}
+                          >
+                            Back
                             </Button>
-                          </CardActions>
+                        </CardActions>
 
-                        </Card>
-                      </ListItem>
-                    ))
-                  }
-                </List>
-              }
-            </div>
-          )}
-      </div>
+                      </Card>
+                    </ListItem>
+                  ))
+                }
+              </List>
+            }
+          </div>
+        )}
+    </div>
   );
 };
 

@@ -45,7 +45,7 @@ const EpisodeList = () => {
 
                       <img src={item.image.medium} alt="img" />
                       <ListItemText primary={`Title: ${item.name}`} />
-                      <ListItemText primary={`Number: ${item.number}`} />
+                      <ListItemText primary={`Episode number: ${item.number}`} />
                       <Button
                         variant="outlined"
                         color="primary"

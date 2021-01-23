@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom';
 import useStyles from "./styles";
 
 
-export default function DenseAppBar() {
+export default function MainAppBar() {
   const classes = useStyles();
 
   return (
     <div className={classes.appBarRoot}>
       <AppBar position="static">
-        <Toolbar variant="dense">
+        <Toolbar>
           <IconButton edge="start" className={classes.menuButton} component={Link} to="/" color="inherit" aria-label="menu">
             <HomeIcon />
           </IconButton>
