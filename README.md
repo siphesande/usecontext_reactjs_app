@@ -1,4 +1,3 @@
-# Getting Started with Create React App
 
 > React, useContext, Material-ui app 
 
@@ -7,7 +6,7 @@ Run app using npm
 ```
 # On the terminal
 git clone https://github.com/siphesande/usecontext_reactjs_app.git
-cd usecontext_reactjs_app$
+cd usecontext_reactjs_app
 npm install 
 
 # Run on http://localhost:3000
@@ -28,5 +27,5 @@ yarn build
   Context API doesn't require any third-party libraries.
 - Using a third-party library like redux is an overkill. 
 - Using typescript is also an overkill. 
-- That's why I'm not using typescript and redux
+- That's why I'm not using typescript and redux.
 
